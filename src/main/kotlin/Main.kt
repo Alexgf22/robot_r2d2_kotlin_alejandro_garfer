@@ -1,4 +1,16 @@
+/**
+ * La función de robot lo que hace es inicializar dos variables, la primera la x y la segunda la y.
+ * Después recorre cada uno de los pasos que da el robot de la lista y si ocupa posición par en la lista
+ * se añade a la segunda coordenada que es la 'y' con el signo cambiado y en caso contrario se añade
+ * a la primera coordenada con el signo cambiado. Pero si ocupa la primera posición se queda con el
+ * mismo signo y se añade a la segunda coordenada que es la 'y'.
+ *
+ * @param movimientos: MutableList<Int> = Secuencia de pasos que da el robot.
+ *
+ * @return lista con la primera coordenada de la 'x' y la segunda coordenada de la 'y'
+ */
 fun robot(movimientos: MutableList<Int>) : List<Int> {
+
     var primeraCoordenada = 0
     var segundaCoordenada = 0
 
