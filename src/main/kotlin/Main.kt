@@ -1,31 +1,44 @@
 /**
  * La función de robot lo que hace es inicializar dos variables, la primera la x y la segunda la y.
- * Después recorre cada uno de los pasos que da el robot de la lista y si ocupa posición par en la lista
- * se añade a la segunda coordenada que es la 'y' con el signo cambiado y en caso contrario se añade
- * a la primera coordenada con el signo cambiado. Pero si ocupa la primera posición se queda con el
- * mismo signo y se añade a la segunda coordenada que es la 'y'.
+ * Después inicializa un contador para controlar que a partir del segundo movimiento hay una secuencia
+ * donde 'x' e 'y' de la posición 1 y 2 de la lista cambian de signo, después 'x' e 'y' de la posición 3 y 4
+ * no cambian de signo y así sucesivamente. Eso se controla con el contador que cuando llega al cuarto movimiento
+ * sin contar la primera 'y' se reinicia el contador a 0 y vuelve a empezar como se ha mencionado anteriormente.
  *
- * @param movimientos: MutableList<Int> = Secuencia de pasos que da el robot.
+ * @param movimientos: MutableList<Int>  Secuencia de pasos que da el robot.
  *
- * @return lista con la primera coordenada de la 'x' y la segunda coordenada de la 'y'
+ * @return lista con la primera coordenada final de la 'x' y la segunda coordenada final de la 'y'.
  */
 fun robot(movimientos: MutableList<Int>) : List<Int> {
 
     var primeraCoordenada = 0
     var segundaCoordenada = 0
+    var contador = 0
 
     for (movimiento in movimientos) {
         if (movimiento == movimientos[0]) {
             segundaCoordenada += movimiento
         }
         else {
-            if (movimientos.indexOf(movimiento) % 2 == 0) {
-                val movimientoAñadir = -movimiento
-                segundaCoordenada += movimientoAñadir
-            }
-            else {
-                val movimientoAñadir = -movimiento
-                primeraCoordenada += movimientoAñadir
+            contador += 1
+            when (contador) {
+                1 -> {
+                    val movimientoAñadir = -movimiento
+                    primeraCoordenada += movimientoAñadir
+                }
+                2 -> {
+                    val movimientoAñadir = -movimiento
+                    segundaCoordenada += movimientoAñadir
+                }
+                3 -> {
+                    val movimientoAñadir = movimiento
+                    primeraCoordenada += movimientoAñadir
+                }
+                4 -> {
+                    val movimientoAñadir = movimiento
+                    segundaCoordenada += movimientoAñadir
+                    contador = 0
+                }
             }
 
         }
