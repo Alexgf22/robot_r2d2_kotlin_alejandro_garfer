@@ -27,10 +27,19 @@ fun robot(movimientos: MutableList<Int>) : List<Int> {
 fun main() {
     val secuenciaMovimientos: MutableList<Int> = mutableListOf()
     var movimientoDado = ""
+    var caracteresNoValidos = listOf<String>("!","#","$","%","&","/","(",")","=","?","¡","'","[","]","{","}",".",";","|","º","@","ª","_","´¨","·","~","€","*","`","^")
     while (movimientoDado != "salir") {
         print("Introduce un movimiento: ")
         movimientoDado = readLine().toString()
-        if (movimientoDado != "salir") {
+        movimientoDado = movimientoDado.replace(" ","")
+        fun error() {
+            if (movimientoDado != "salir") {
+                println("No se permiten caracteres que no sean numeros ni espacios")
+            }
+        }
+        if (movimientoDado in ("a".."z") || movimientoDado in ("A".."Z") || movimientoDado in caracteresNoValidos) {
+            error()
+        } else {
             val movimientoEntero = movimientoDado.toInt()
             secuenciaMovimientos.add(movimientoEntero)
         }
@@ -40,3 +49,5 @@ fun main() {
 
     print("Las coordenadas finales del robot son: ${robot(secuenciaMovimientos)}")
 }
+
+
