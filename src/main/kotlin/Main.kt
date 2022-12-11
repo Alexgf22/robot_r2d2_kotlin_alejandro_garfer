@@ -8,11 +8,11 @@ fun robot(movimientos: MutableList<Int>) : List<Int> {
         }
         else {
             if (movimientos.indexOf(movimiento) % 2 == 0) {
-                var movimientoAñadir = -movimiento
+                val movimientoAñadir = -movimiento
                 segundaCoordenada += movimientoAñadir
             }
             else {
-                var movimientoAñadir = -movimiento
+                val movimientoAñadir = -movimiento
                 primeraCoordenada += movimientoAñadir
             }
 
@@ -25,13 +25,13 @@ fun robot(movimientos: MutableList<Int>) : List<Int> {
 
 
 fun main() {
-    var secuenciaMovimientos: MutableList<Int> = mutableListOf()
+    val secuenciaMovimientos: MutableList<Int> = mutableListOf()
     var movimientoDado = ""
     while (movimientoDado != "salir") {
         print("Introduce un movimiento: ")
         movimientoDado = readLine().toString()
         if (movimientoDado != "salir") {
-            var movimientoEntero = movimientoDado.toInt()
+            val movimientoEntero = movimientoDado.toInt()
             secuenciaMovimientos.add(movimientoEntero)
         }
     }
